@@ -28,13 +28,13 @@ const Form = (): React.JSX.Element => {
         <>            
             {submitted && !formError
                 ? <Msg />
-                : <form action={handleForm} className="flex flex-col mt-[1.31rem] items-center">
+                : <form className="flex flex-col mt-[1.31rem] items-center">
                     <div className='flex flex-col lg:flex-row lg:gap-x-20 '>
                         {formFields.map((field, index) => (                            
                             <CustomInput key={index} name={field} />                            
                         ))}
                     </div>
-                    <button className="text-center rounded-3xl bg-mossGreen w-[16.31rem] h-[3.06rem] my-6" type='submit'>
+                    <button className="text-center rounded-3xl bg-mossGreen w-[16.31rem] h-[3.06rem] my-6">
                         <p>Cadastrar!</p>
                     </button>
                 </form>
