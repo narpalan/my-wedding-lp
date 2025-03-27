@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useCopyToClipboard } from '@/hooks/useCopyToCliboard';
 
-const chavePix = '09f42afe-e5df-45de-8d95-7e908b2e9e70';
+const chavePix = '';
 const amazonListLink = 'https://www.amazon.com.br/hz/wishlist/ls/3Q8YYWX6OV1C1?ref_=wl_share';
 
 export default function GiftCard ({ 
