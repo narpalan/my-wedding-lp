@@ -4,7 +4,7 @@ import Wrapper from '../wrapper';
 const About = (): React.JSX.Element => {
     return (
     <Wrapper>
-        <div className='flex flex-col h-[1715px] gap-y-20 lg:gap-x-30 lg:flex-row md:max-lg:items-center lg:justify-around my-5 mx-5 py-5 lg:my-16 lg:mx-20 lg:h-[35rem]'>              
+        <div className='flex flex-col h-[1715px] gap-y-20 lg:gap-x-20 lg:flex-row md:max-lg:items-center lg:justify-center my-5 mx-5 py-5 lg:my-16 lg:mx-20 lg:h-[35rem]'>              
             <Image
                 src='https://res.cloudinary.com/dnww83mmv/image/upload/v1728875048/foto-casal-2-festa-junina_j2uykc.webp'
                 width={348}
