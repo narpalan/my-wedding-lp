@@ -3,7 +3,6 @@ import Hero from '@/components/hero';
 import Wrapper from '@/components/wrapper';
 import Divider from '@/components/divider/divider';
 import CeremonyMap from '@/components/ceremony-map/ceremony-map';
-import Form from '@/components/form/form';
 import FormTwo from '@/components/form/form-two';
 import GiftList from '@/components/gift-list/gift-list';
 import About from '@/components/about/about';
