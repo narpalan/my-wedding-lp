@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { setNewRSVP } from '@/actions';
+import { setNewRSVP /*, getAllRSVP, getRSVPCount */ } from '@/actions';
 import Msg from './components/msg';
 import CustomInputTwo from './components/input-two';
 
@@ -11,11 +11,14 @@ const FormTwo = (): React.JSX.Element => {
 
     const [submitted, setSubmitted] = useState(false);
     const [formError, setFormError] = useState(false);
-    const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({}); // State for individual field errors
+    //Individual state errors
+    const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({});
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleForm = async (formData: FormData) => {
         setFormError(false);
         setFieldErrors({});
+        setIsLoading(true);
         
         const res = await setNewRSVP(formData);
 
@@ -34,14 +37,22 @@ const FormTwo = (): React.JSX.Element => {
             setFormError(true);
         }
         setSubmitted(true);
-        return;       
-    };
+        setIsLoading(false);              
+    };   
     
     return (
         <>      
             {submitted && !formError
                 ? <Msg />
-                : <form action={handleForm} className="flex flex-col mt-[1.31rem] text-justify items-center px-5">
+                : <form 
+                    action={handleForm} 
+                    className="flex flex-col mt-[1.31rem] text-justify items-center px-5"
+                    onSubmit={async (e) => {
+                        e.preventDefault(); 
+                        const formData = new FormData(e.currentTarget);
+                        await handleForm(formData);
+                    }}
+                >
                     <p className='indent-8'>Para garantir a entrada, <span className='font-bold'>CADA CONVIDADO/ACOMPANHANTE</span> deve preencher o formulário abaixo, <span className='font-bold'>SEPARADAMENTE!</span></p>                    
                     <p className='indent-8'>Ainda que o nome esteja na lista (cadastrado pelo formulário) é <span className='font-bold'>INDISPENSÁVEL</span> a apresentação do convite individual na entrada.</p>
                     <div className='flex flex-col lg:flex-row lg:gap-x-20 pt-5'>
@@ -54,10 +65,11 @@ const FormTwo = (): React.JSX.Element => {
                         ))}
                     </div>
                     <button aria-label='Confirmar cadastro de presença' className="text-center rounded-3xl bg-mossGreen w-[16.31rem] h-[3.06rem] my-6" type='submit'>
-                        <p>Cadastrar!</p>
-                    </button>
+                        <p>{isLoading ? 'Enviando...' : 'Cadastrar!'}</p>
+                    </button>                    
                 </form>
-            }
+            
+            }           
         </>
     )
 }
