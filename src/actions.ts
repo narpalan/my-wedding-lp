@@ -8,6 +8,24 @@ const NewRSVPSchema = z.object({
     mobile: z.string(),
 });
 
+/*
+export const getAllRSVP = async () => {
+    const allRSVP = await db.rsvp.findMany({
+        select: {
+            fullName: true,
+            mobile: true,
+        },
+    });
+    return JSON.stringify(allRSVP, null, 2);
+}
+
+
+export const getRSVPCount = async () => {
+    const count = await db.rsvp.count();
+    return count;
+}
+    
+*/
 const getRSVP = async (fullName: string) => {
     const user = await db.rsvp.findFirst({
         where: {
