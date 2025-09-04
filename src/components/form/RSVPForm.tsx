@@ -7,10 +7,11 @@ import CustomInputTwo from './components/input-two';
 
 const formFields = ['fullName', 'mobile'];
 
-const FormTwo = (): React.JSX.Element => {
+const RSVPForm = (): React.JSX.Element => {
 
     const [submitted, setSubmitted] = useState(false);
     const [formError, setFormError] = useState(false);
+
     //Individual state errors
     const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({});
     const [isLoading, setIsLoading] = useState(false);
@@ -74,4 +75,4 @@ const FormTwo = (): React.JSX.Element => {
     )
 }
 
-export default FormTwo;
+export default RSVPForm;
